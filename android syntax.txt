@@ -1,0 +1,44 @@
+public void explicit()
+    {
+        Intent i= new Intent(getApplicationContext(),main2.class);
+        startActivity(i);
+    }
+    public void implicit()
+    {
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(""));
+        startActivity(i);
+    }
+    public void popup(View view)
+    {
+        PopupMenu popupMenu=new PopupMenu(this,view);
+        popupMenu.inflate(R.menu.popup);
+        popupMenu.setOnMenuItemClickListener(item -> {
+            Toast.makeText(this,"you selected"+item.getTitle(),Toast.LENGTH_LONG).show();
+            return true;
+        });
+    }
+
+    public void fragments(View view)
+    {
+        Fragment fragment=new BlankFragment();
+        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container,fragment).commit();
+        Button button =findViewById(R.id.buttonid);
+        button.setVisibility(View.GONE);
+
+
+    }
+
+    public void viewweb(){
+        WebView webView=findViewById(R.id.webview);
+        webView.loadUrl("");
+    }
+
+    public void selector()
+    {
+        RadioGroup rg= findViewById(R.id.radiogroup);
+        int gender=rg.getCheckedRadioButtonId();
+        RadioButton selectedbutton=findViewById(gender);
+        String gendername=selectedbutton.getText().toString();
+
+    }
